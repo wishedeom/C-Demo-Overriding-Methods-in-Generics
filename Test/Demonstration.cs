@@ -14,14 +14,17 @@ namespace Test
 			a.Destroy();
 			Console.WriteLine("Destroying Thing a.");
 
-			Console.Write("a.IsNull() == ");
-			Console.WriteLine(a.IsNull());
+			Console.Write("a.IsNullExtension() == ");
+			Console.WriteLine(a.IsNullExtension());
+
+			Console.Write("a.IsNullMember() == ");
+			Console.WriteLine(a.IsNullMember());
 
 			Console.Write("(a == null) == ");
 			Console.WriteLine(a == null);
 		}
 
-		public static bool IsNull<T>(this T o) where T : class
+		public static bool IsNullExtension<T>(this T o) where T : class
 		{
 			return o == null;
 		}
@@ -34,6 +37,11 @@ namespace Test
 		public void Destroy()
 		{
 			_isDestroyed = true;
+		}
+
+		public bool IsNullMember()
+		{
+			return this == null;
 		}
 
 		public static bool operator ==(Thing a, object b)
