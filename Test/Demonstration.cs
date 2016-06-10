@@ -71,21 +71,7 @@ namespace Test
 
 		public static bool operator ==(Thing a, object b)
 		{
-			if (b == null)
-			{
-				return a._isDestroyed;
-			}
-			else
-			{
-				if (b is Thing)
-				{
-					return true;
-				}
-				else
-				{
-					return false;
-				}
-			}
+			return b == null ? a._isDestroyed : b is Thing;
 		}
 
 		public static bool operator !=(Thing a, object b)
