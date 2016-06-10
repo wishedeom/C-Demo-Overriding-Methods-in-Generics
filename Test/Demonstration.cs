@@ -14,17 +14,42 @@ namespace Test
 			a.Destroy();
 			Console.WriteLine("Destroying Thing a.");
 
-			Console.Write("a.IsNullExtension() == ");
-			Console.WriteLine(a.IsNullExtension());
+			Console.Write("(a == null) == ");
+			Console.WriteLine(a == null);
+
+			Console.Write("a.IsNullGenericExtension() == ");
+			Console.WriteLine(a.IsNullGenericExtension());
+
+			Console.Write("a.IsNullConcreteExtension() == ");
+			Console.WriteLine(a.IsNullConcreteExtension());
+
+			Console.Write("IsNullGenericStatic(a) == ");
+			Console.WriteLine(IsNullGenericStatic(a));
+
+			Console.Write("IsNullConcreteStatic(a) == ");
+			Console.WriteLine(IsNullConcreteStatic(a));
 
 			Console.Write("a.IsNullMember() == ");
 			Console.WriteLine(a.IsNullMember());
 
-			Console.Write("(a == null) == ");
-			Console.WriteLine(a == null);
 		}
 
-		public static bool IsNullExtension<T>(this T o) where T : class
+		public static bool IsNullGenericExtension<T>(this T o)
+		{
+			return o == null;
+		}
+
+		public static bool IsNullConcreteExtension(this Thing o)
+		{
+			return o == null;
+		}
+
+		public static bool IsNullGenericStatic<T>(T o)
+		{
+			return o == null;
+		}
+
+		public static bool IsNullConcreteStatic(Thing o)
 		{
 			return o == null;
 		}
